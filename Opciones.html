@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Opciones</title>
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <button onclick="showContent('abonado')">Abonado</button>
+        <button onclick="showContent('imei')">IMEI</button>
+        <button onclick="showContent('plan')">Plan</button>
+        <button onclick="showContent('database')">Base de datos</button>
+    </header>
+
+    <div class="form-main">
+        <div class="form-content box">
+            <div id="content" class="content">
+                <p>Selecciona una opción para ver su información.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(option) {
+            let content = document.getElementById('content');
+            switch (option) {
+                case 'abonado':
+                    content.innerHTML = `
+                        <h2>Información del Abonado</h2>
+                        <p>Aquí puedes ver los detalles del abonado, incluyendo su número de abonado, datos de contacto y más.</p>
+                    `;
+                    break;
+                case 'imei':
+                    content.innerHTML = `
+                        <h2>Información del IMEI</h2>
+                        <p>Aquí se muestra el número IMEI del dispositivo, junto con detalles sobre el fabricante y modelo.</p>
+                    `;
+                    break;
+                case 'plan':
+                    content.innerHTML = `
+                        <h2>Detalles del Plan</h2>
+                        <p>Consulta los detalles del plan de datos, incluyendo minutos, mensajes y datos disponibles.</p>
+                    `;
+                    break;
+                case 'database':
+                    content.innerHTML = `
+                        <h2>Base de Datos</h2>
+                        <p>Accede a la base de datos de usuarios y dispositivos para gestionar los registros.</p>
+                    `;
+                    break;
+                default:
+                    content.innerHTML = `<p>Selecciona una opción para ver su información.</p>`;
+            }
+        }
+    </script>
+
+    <footer>
+        <hr><br>
+        <p class="copyright"> &copy Copyright Daniel & David - 2024</p>
+    </footer>
+</body>
+</html>

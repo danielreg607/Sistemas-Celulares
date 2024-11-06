@@ -265,3 +265,16 @@ a{
     background-color: var(--green);
     transform: translateY(2px);
 }
+
+/*seccion de estilo footer*/
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    margin: 0;
+}
