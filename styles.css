@@ -239,3 +239,29 @@ a{
 .header button:hover {
     background-color: var(--violet); /* Color violeta al pasar el cursor */
 }
+
+
+/* Estilos para el botón "Intentar de nuevo" */
+.retry-button {
+    display: inline-block;
+    background-color: var(--blue);
+    color: var(--text-white);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.retry-button:hover {
+    background-color: var(--violet);
+    transform: translateY(-2px);
+}
+
+.retry-button:active {
+    background-color: var(--green);
+    transform: translateY(2px);
+}
