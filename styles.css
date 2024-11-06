@@ -89,6 +89,7 @@ a{
     border-radius: 5px;
     backdrop-filter: var(--blur);
     box-shadow: 5px 10px 8px #888888;
+    background-color: #004e92;
 }
 
 .form-content h3{
