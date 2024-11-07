@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación de Usuario</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Referencia al archivo CSS externo -->
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html">Inicio</a>
+        <a href="autenticacion.html">Autenticación</a>
+        <a href="informacion.html">Información</a>
+    </div>
+    
+
+<div class="form-main">
+    <div class="form-content">
+        <div class="box">
+            <h3>Autenticación Inicial</h3>
+            <form id="auth-form">
+                <div class="input-box">
+                    <label for="number">Número de Abonado</label>
+                    <input id="number" class="input-control" maxlength="10" required>
+                </div>
+                <div class="input-box">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" class="input-control" required>
+                </div>
+                <div class="input-box">
+                    <label for="confirm-password">Confirmar Contraseña</label>
+                    <input type="password" id="confirm-password" class="input-control" required>
+                </div>
+                <div class="input-box">
+                    <label for="payment-info">Información de Pago</label>
+                    <input id="payment-info" class="input-control" required>
+                </div>
+                <div class="input-box">
+                    <label for="confirm-payment-info">Confirmar Pago</label>
+                    <input id="confirm-payment-info" class="input-control" required>
+                </div>
+                <button type="submit" class="btn">Buscar Abonado</button>
+                <p id="auth-message" class="hidden"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let attempt = 0, MAX_ATTEMPTS = 2, availableServices = ['llamadas', 'sms', 'mms', 'datos móviles'];
+
+    document.getElementById('auth-form').onsubmit = e => {
+        e.preventDefault();
+        const [number, password, confirmPassword, paymentInfo, confirmPaymentInfo] = ['number', 'password', 'confirm-password', 'payment-info', 'confirm-payment-info'].map(id => document.getElementById(id).value);
+
+        if (attempt < MAX_ATTEMPTS) {
+            if (password === confirmPassword && paymentInfo === confirmPaymentInfo) {
+                document.getElementById('auth-message').textContent = `Bienvenido. Datos: MNC, MCC, CellID, frecuencia, HLR o VLR.`;
+                document.getElementById('auth-message').classList.remove('hidden');
+                document.getElementById('auth-form').classList.add('hidden');
+                document.getElementById('service-screen').classList.remove('hidden');
+            } else {
+                attempt++;
+                document.getElementById('auth-message').textContent = 'Autenticación fallida. Verifique los datos ingresados.';
+                document.getElementById('auth-message').classList.remove('hidden');
+            }
+        } else {
+            document.getElementById('auth-message').textContent = 'Se han superado los intentos de autenticación.';
+        }
+    };
+
+    document.getElementById('check-service').onclick = () => {
+        const service = document.getElementById('service').value.toLowerCase();
+        document.getElementById('service-message').textContent = availableServices.includes(service) ? 'Servicio disponible.' : 'Servicio no disponible.';
+        document.getElementById('service-message').classList.remove('hidden');
+    };
+</script>
+
+    <footer>
+        <hr><br>
+        <p class="copyright"> &copy Copyright Daniel & David - 2024</p>
+    </footer>
+
+</body>
+</html>

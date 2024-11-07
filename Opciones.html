@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Opciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <button onclick="showContent('abonado')">Abonado</button>
+        <button onclick="showContent('imei')">IMEI</button>
+        <button onclick="showContent('plan')">Plan</button>
+        <button onclick="showContent('database')">Base de datos</button>
+        <button onclick="showContent('mapa')">Mapa de Ruta</button>
+    </header>
+
+    <div class="form-main">
+        <div class="form-content box">
+            <div id="content" class="content">
+                <p>Selecciona una opción para ver su información.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(option) {
+            let content = document.getElementById('content');
+            switch (option) {
+                case 'abonado':
+                    content.innerHTML = `
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
+                            <h2>Información del Abonado</h2><hr><br><br>
+                            <p>Número de abonado: 123456789</p>
+                            <p>Operador: Telcel</p>
+                            <p>Frecuencia: 1800 MHz</p>
+                        </div>
+                    `;
+                    break;
+                case 'imei':
+                    content.innerHTML = `
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
+                            <h2>Información del IMEI</h2><hr><br><br>
+                            <p>Número IMEI: ${Math.floor(Math.random() * 1e15)}</p>
+                            <p>Operador: Movistar</p>
+                            <p>Marca del Celular: Samsung</p>
+                        </div>
+                    `;
+                    break;
+                case 'plan':
+                    content.innerHTML = `
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
+                            <h2>Detalles del Plan</h2><hr><br><br>
+                            <p>Operador: AT&T</p>
+                            <p>Plan de Pago: Mensual</p>
+                            <p>Estado del MS: Activo</p>
+                            <p>Servicio: Datos y voz</p>
+                        </div>
+                    `;
+                    break;
+                case 'database':
+                    content.innerHTML = `
+                        <div style="background-color: #003366; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <h2>Base de Datos</h2><hr><br><br>
+                            <p>Acceso a la base de datos de usuarios:</p>
+                            <iframe src="http://tudominio.com/ruta-a-tu-database" width="100%" height="300" style="border:none;"></iframe>
+                        </div>
+                    `;
+                    break;
+                case 'mapa':
+                    content.innerHTML = `
+                    <h2>Mapa de ruta</h2><hr><br><br>  
+                    <div class="map-box">
+                            <div class="button-container">
+                                <button class="styled-button" onclick="showImage('A')">Punto A</button>
+                                <button class="styled-button" onclick="showImage('B')">Punto B</button>
+                                <button class="styled-button" onclick="showImage('C')">Punto C</button>
+                            </div>
+                            <div class="image-container">
+                                <img id="mainImage" src="imagenes/Mapa.png" alt="Imagen Principal">
+                                <button class="close-button" id="closeButton" onclick="resetImage()">X</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                default:
+                    content.innerHTML = `<p>Selecciona una opción para ver su información.</p>`;
+            }
+        }
+
+        // Función para mostrar la imagen específica y el botón de cerrar
+        function showImage(point) {
+            const mainImage = document.getElementById('mainImage');
+            const closeButton = document.getElementById('closeButton');
+
+            // Cambiar la imagen según el punto seleccionado
+            switch (point) {
+                case 'A':
+                    mainImage.src = "ruta/imagen_punto_a.jpg";
+                    break;
+                case 'B':
+                    mainImage.src = "ruta/imagen_punto_b.jpg";
+                    break;
+                case 'C':
+                    mainImage.src = "ruta/imagen_punto_c.jpg";
+                    break;
+            }
+
+            // Mostrar el botón de cerrar
+            closeButton.style.display = 'block';
+        }
+
+        // Función para restaurar la imagen principal y ocultar el botón de cerrar
+        function resetImage() {
+            const mainImage = document.getElementById('mainImage');
+            const closeButton = document.getElementById('closeButton');
+
+            // Restaurar la imagen principal
+            mainImage.src = "imagenes/Mapa.png";
+
+            // Ocultar el botón de cerrar
+            closeButton.style.display = 'none';
+        }
+    </script>
+
+    <footer>
+        <hr><br>
+        <p class="copyright"> &copy; Copyright Daniel & David - 2024</p>
+    </footer>
+</body>
+</html>
