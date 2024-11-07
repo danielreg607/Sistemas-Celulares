@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación Exitosa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-main">
+        <div class="form-content">
+            <div class="box">
+                <h3 class="gradient-text">¡Autenticación Exitosa!</h3>
+                <p>Bienvenido. Aquí están los datos de su conexión:</p>
+                
+                <div class="info" id="datosBSS"></div>
+                <div class="info" id="registro"></div>
+                <div class="info" id="roaming"></div>
+                <div class="info" id="handover"></div>
+                <div class="info" id="operador"></div>
+
+                <!-- Botón Regresar -->
+                <button id="btnRegresar" class="btn">Regresar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulación de datos de autenticación
+        const datos = {
+            mnc: '001',
+            mcc: '310',
+            cellId: '012345',
+            frecuencia: '1800 MHz',
+            registradoEn: 'HLR', // o "VLR"
+            roaming: true,       // o false
+            handover: 'Cambio de región',
+            operador: 'telcel',
+            marca: 'Samsung',
+            estado: 'Normal',
+            servicio: 'LTE'
+        };
+
+        // Mostrar los datos en la interfaz
+        document.getElementById("datosBSS").innerHTML = `
+            <p><strong>MNC:</strong> ${datos.mnc}</p>
+            <p><strong>MCC:</strong> ${datos.mcc}</p>
+            <p><strong>Cell ID:</strong> ${datos.cellId}</p>
+            <p><strong>Frecuencia:</strong> ${datos.frecuencia}</p>
+        `;
+        document.getElementById("registro").innerHTML = `
+            <p><strong>Registro en:</strong> ${datos.registradoEn}</p>
+        `;
+        document.getElementById("roaming").innerHTML = `
+            <p><strong>Roaming:</strong> ${datos.roaming ? "Sí" : "No"}</p>
+        `;
+        document.getElementById("handover").innerHTML = `
+            <p><strong>Handover:</strong> ${datos.handover}</p>
+        `;
+        document.getElementById("operador").innerHTML = `
+            <p><strong>Operador:</strong> ${datos.operador}</p>
+            <p><strong>Marca:</strong> ${datos.marca}</p>
+            <p><strong>Estado:</strong> ${datos.estado}</p>
+            <p><strong>Servicio:</strong> ${datos.servicio}</p>
+        `;
+
+        // Función para guardar datos en localStorage y redirigir
+        document.getElementById("btnRegresar").addEventListener("click", function() {
+            localStorage.setItem("datosAutenticacion", JSON.stringify(datos));
+            window.location.href = "opciones.html";
+        });
+    </script>
+
+    <footer>
+        <hr><br>
+        <p class="copyright"> &copy; Copyright Daniel & David - 2024</p>
+    </footer>
+</body>
+</html>

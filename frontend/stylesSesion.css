@@ -1,0 +1,442 @@
+/* stylesSesion.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+/*libreria de letra importada*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root {
+    /*variables a ocupar en bloque*/
+    /*variables de color*/
+    --green: hsl(162, 45%, 56%);
+    --plomo: hsl(162, 2%, 56%);
+    --blue: hsl(220, 85%, 57%);
+    --violet: hsl(272, 92%, 32%);
+    --text-white: hsl(0, 0%, 100%);
+    --text-light-gray: hsl(0, 0%, 90%);
+    --body-bg-color: hsl(200, 61%, 19%);
+    --glass-bg-color: hsla(0, 0%, 100%, 0.05);
+    --border-color: hsla(0, 0%, 100%, 0.25);
+    --blur: blur(10px);
+    /*Desenfoque a la imagen de entrada*/
+    --button-hover-color: hsla(0, 0%, 0%, 0.47);
+    /*Se usa para cambiar el color de boton cuando se pase el cursor
+                                                por encima */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background-color: var(--body-bg-color);
+    color: var(--text-light-gray);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+body::after,
+body::before {
+    /**/
+    content: '';
+    position: fixed;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(150px);
+    opacity: 0.5;
+}
+
+body::before {
+    background-color: var(--green);
+    /*dar contraste al fondo inicial*/
+    left: 0;
+    bottom: 0;
+    transform: translate(-50%);
+}
+
+body::after {
+    background-color: var(--violet);
+    right: 0;
+    top: 0;
+    transform: translate(50%);
+}
+
+.header {
+    background-color: #1b3039;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header .logo {
+    cursor: pointer;
+}
+
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover {
+    transform: scale(1.2);
+}
+
+.header .nav-links {
+    list-style: none;
+}
+
+.header .nav-links li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links li:hover {
+    transform: scale(1.1);
+}
+
+.header .nav-links a {
+    font-size: 700;
+    color: #eceff1;
+    text-decoration: none;
+}
+
+.header .nav-links li a:hover {
+    color: #ffbc0e;
+}
+
+.header .btn button {
+    font-weight: 700;
+    color: #1b3039;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover {
+    background-color: #e2f1f8;
+    color: #ffbc0e;
+    transform: scale(1.1);
+}
+
+.section {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: transparent; /* Ajusta el color de fondo según tus necesidades */
+    color: var(--text-light-gray); /* Ajusta el color del texto según tus necesidades */
+}
+
+.content h2 {
+    font-size: 2em; /* Tamaño de fuente personalizado para h2 dentro de .content */
+}
+
+/* Agrega más estilos según tus necesidades */
+
+
+
+.form-main {
+    min-height: 100vh;
+    padding: 60px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-content .box {
+    border-color: var(--glass-bg-color);
+    border: 1px var(--border-color) solid;
+    padding: 40px 50px;
+    border-radius: 5px;
+    backdrop-filter: var(--blur);
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.form-content h1 {
+    font-size: 28px;
+    text-align: center;
+    line-height: 1.2;
+    color: var(--text-white);
+    font-weight: 500;
+}
+
+footer p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8em;
+    background-color: #1b3039;
+    height: 7.5%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.box2 {
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    padding: 20px;
+    background-color: #e1eaf7;
+    border: 1px solid #4299e1;
+    border-radius: 5px;
+    color: #1a202c;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    text-align: left;
+    background-color: #ddd;
+}
+
+span {
+    font-weight: bold;
+}
+
+.box3 {
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    padding: 20px;
+    background-color: #e1eaf7;
+    border: 1px solid #4299e1;
+    border-radius: 5px;
+    color: #1a202c;
+}
+
+.btn {
+    font-weight: 700;
+    color: #1b3039;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+    background-color: #e2f1f8;
+    color: #ffbc0e;
+    transform: scale(1.1);
+}
+
+.box4 {
+    position: absolute;
+    top: 600px;
+    left: 1190px;
+    padding: 20px;
+    background-color: #e1eaf7;
+    border: 1px solid #4299e1;
+    border-radius: 5px;
+    color: #1a202c;
+}
+
+
+
+
+/*regla que quita todos los margenes preestablecidos 
+  en la hoja de estilo por defeto de los navegadores */
+  
+  /* Establece fondo general de la página y tamaño de fuente utilizado
+     para REM en la página */
+
+  /*Contenedor de los elementos de la página*/
+
+ 
+ 
+
+  
+  
+  /* NSI*/
+  
+  
+   
+  
+  .circular-button{
+    font-weight: 700;
+    color: #111111;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+  }
+  
+  .circular-button:hover {
+    background-color: rgb(255, 235, 247); /* Cambia el color de fondo al pasar el cursor sobre el botón */
+    cursor: pointer;
+  }
+  
+  .iluminar-input {
+    border: 2px solid #ff69b4; /* Color rosa (#ff69b4) */
+    transition: border-color 0.3s ease; /* Transición suave del color del borde */
+  }
+  
+  .iluminar-input:focus {
+    border-color: #ff1493; /* Color rosa más oscuro (#ff1493) al enfocar el input */
+    box-shadow: 0 0 5px #ff1493; /* Efecto de sombra para resaltar */
+  }
+  
+  
+  
+
+  article section{
+    margin: 0.7rem;
+    width: auto;
+    height: auto;
+    border: 2px red dashed;
+}
+
+.pos-absoluta-img, .posicionamiento img{
+    width: 20%;
+    height: 200px;
+    margin: 0.5rem;  
+    border: 1px black dashed;  
+    position: relative;    
+  }
+
+.posicionamiento .seccion-abs{
+    margin: 0.7rem;
+    width: auto;
+    height: 250;
+    border: 2px red dashed;
+    position: relative;    
+
+}
+
+
+
+.posicionamiento h4{
+   padding: 0.2rem 0.5rem;  
+}
+
+
+
+.posicionamiento .relativo{
+  position: relative;  
+  top: 2rem;
+}
+
+
+.absoluto{
+    position: absolute;  
+    top: 100px;
+    left: 200px;
+  }
+  
+
+  .box5 {
+    position: absolute;
+    top: 100px;
+    left: 37%;
+    padding: 20px;
+    background-color: #e1eaf7;
+    border: 1px solid #4299e1;
+    border-radius: 5px;
+    color: #1a202c;
+}
+
+.becas {
+    position: relative;
+    top: 100px;
+    left: 34%;
+}
+
+.pdf {
+    position: relative;
+    top: 110px;
+}
+
+main {
+    text-align: center; /* Centra el texto */
+    padding: 20px;
+}
+
+/* Ajusta el margen derecho de los videos */
+.video-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 70px;
+    margin-right: 20px; /* Ajusta el margen derecho */
+}
+
+.video {
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+/* Estilos del botón para cerrar sesión y consultar convocatoria */
+.btn-consultar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.btn-consultar a,
+.header .btn button {
+    font-weight: 700;
+    color: #1b3039;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    text-decoration: none; /* Agregado para quitar subrayado */
+    display: inline-block; /* Agregado para evitar el margen extra */
+}
+
+.btn-consultar a:hover,
+.header .btn button:hover {
+    background-color: #e2f1f8;
+    color: #ffbc0e;
+    transform: scale(1.1);
+}
+
+#userDataForm, #modifyDataForm {
+    position: relative; /* O utiliza 'absolute' según lo que necesites */
+    /* Ajusta las propiedades de posición según sea necesario */
+}
+
+
