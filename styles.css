@@ -56,6 +56,21 @@ body::after{
     transform: translate(50%);
 }
 
+/* Estilo para los enlaces de la barra de navegación */
+.header a {
+    text-decoration: underline; /* Subraya el texto */
+    color: black; /* Color por defecto */
+    padding: 10px;
+    margin: 0 15px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.header a:hover {
+    color: yellow; /* Cambia a amarillo al pasar el cursor */
+}
+
+
 a{
     text-decoration: none;
     font-weight: 500;
@@ -288,4 +303,79 @@ footer p {
     max-width: 400px;
     margin: 20px auto;
     text-align: center;
+}
+
+
+ /* Estilos adicionales para el mapa de ruta */
+/* Estilos adicionales para el mapa de ruta */
+.map-box {
+    display: flex;
+    width: 1000px; /* Aumenta el ancho de la caja */
+    height: 600px; /* Aumenta la altura de la caja */
+    background-color: #ab34da;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
+}
+.button-container button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+}
+.image-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-container img {
+    width: 800px; /* Aumenta el ancho de la imagen dentro del contenedor */
+    height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+    border-radius: 10px;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: none;
+}
+.button-container .styled-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-white);
+    background: linear-gradient(to right, var(--green), var(--blue));
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button-container .styled-button:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+.button-container .styled-button:active {
+    background-color: var(--violet);
+    transform: translateY(2px);
 }

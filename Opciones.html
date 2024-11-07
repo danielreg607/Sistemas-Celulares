@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selector de Opciones</title>
-    <!-- Enlace a la hoja de estilos externa -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+       
+    </style>
 </head>
 
 <body>
@@ -31,73 +33,57 @@
             switch (option) {
                 case 'abonado':
                     content.innerHTML = `
-                        <div class="info-box">
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
                             <h2>Información del Abonado</h2><hr><br><br>
-                            <p>Número de Abonado: 123456789</p>
-                            <p>Operador: OperadorXYZ</p>
+                            <p>Número de abonado: 123456789</p>
+                            <p>Operador: Telcel</p>
                             <p>Frecuencia: 1800 MHz</p>
                         </div>
                     `;
                     break;
                 case 'imei':
-                    const randomIMEI = Math.floor(100000000000000 + Math.random() * 900000000000000); // Genera un IMEI aleatorio de 15 dígitos
                     content.innerHTML = `
-                        <div class="info-box">
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
                             <h2>Información del IMEI</h2><hr><br><br>
-                            <p>IMEI: ${randomIMEI}</p>
-                            <p>Operador: OperadorXYZ</p>
-                            <p>Marca: MarcaCelular</p>
+                            <p>Número IMEI: ${Math.floor(Math.random() * 1e15)}</p>
+                            <p>Operador: Movistar</p>
+                            <p>Marca del Celular: Samsung</p>
                         </div>
                     `;
                     break;
                 case 'plan':
                     content.innerHTML = `
-                        <div class="info-box">
+                        <div style="background-color: #003366; color: white; padding: 20px; text-align: center; border-radius: 10px;">
                             <h2>Detalles del Plan</h2><hr><br><br>
-                            <p>Operador: OperadorXYZ</p>
-                            <p>Plan de Pago: Postpago</p>
+                            <p>Operador: AT&T</p>
+                            <p>Plan de Pago: Mensual</p>
                             <p>Estado del MS: Activo</p>
-                            <p>Servicio: Datos y llamadas</p>
+                            <p>Servicio: Datos y voz</p>
                         </div>
                     `;
                     break;
                 case 'database':
                     content.innerHTML = `
-                        <h2>Base de Datos de Usuarios</h2><hr><br><br>
-                        <table border="1" style="width:100%; text-align:left;">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Número de Abonado</th>
-                                <th>Operador</th>
-                                <th>Plan</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Juan Pérez</td>
-                                <td>123456789</td>
-                                <td>OperadorXYZ</td>
-                                <td>Postpago</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>María López</td>
-                                <td>987654321</td>
-                                <td>OperadorABC</td>
-                                <td>Prepago</td>
-                            </tr>
-                            <!-- Puedes agregar más filas aquí -->
-                        </table>
+                        <div style="background-color: #003366; color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                            <h2>Base de Datos</h2><hr><br><br>
+                            <p>Acceso a la base de datos de usuarios:</p>
+                            <iframe src="http://tudominio.com/ruta-a-tu-database" width="100%" height="300" style="border:none;"></iframe>
+                        </div>
                     `;
                     break;
                 case 'mapa':
                     content.innerHTML = `
-                        <h2>Mapa de la ruta</h2>
-                        <p>Mapa de la ruta con los tres puntos para verificar cobertura.</p>
-                        <button onclick="showImage(1)">Punto 1</button>
-                        <button onclick="showImage(2)">Punto 2</button>
-                        <button onclick="showImage(3)">Punto 3</button>
-                        <div id="imageContainer"></div>
+                        <<div class="map-box">
+                            <div class="button-container">
+                                <button class="styled-button" onclick="showImage('A')">Punto A</button>
+                                <button class="styled-button" onclick="showImage('B')">Punto B</button>
+                                <button class="styled-button" onclick="showImage('C')">Punto C</button>
+                            </div>
+                            <div class="image-container">
+                                <img id="mainImage" src="imagenes/Mapa.png" alt="Imagen Principal">
+                                <button class="close-button" id="closeButton" onclick="resetImage()">X</button>
+                            </div>
+                        </div>
                     `;
                     break;
                 default:
@@ -105,28 +91,44 @@
             }
         }
 
-        function showImage(pointType) {
-            let imageContainer = document.getElementById('imageContainer');
-            let abonadoNumber = prompt("Ingrese el número de abonado:");
-            let imagePath;
+        // Función para mostrar la imagen específica y el botón de cerrar
+        function showImage(point) {
+            const mainImage = document.getElementById('mainImage');
+            const closeButton = document.getElementById('closeButton');
 
-            // Determina la imagen a mostrar según el tipo de punto y el número de abonado
-            if (pointType === 1) {
-                imagePath = abonadoNumber == 1 ? "ruta/imagen1_tipo1.jpg" : "ruta/imagen1_default.jpg";
-            } else if (pointType === 2) {
-                imagePath = abonadoNumber == 2 ? "ruta/imagen2_tipo2.jpg" : "ruta/imagen2_default.jpg";
-            } else if (pointType === 3) {
-                imagePath = abonadoNumber == 3 ? "ruta/imagen3_tipo3.jpg" : "ruta/imagen3_default.jpg";
+            // Cambiar la imagen según el punto seleccionado
+            switch (point) {
+                case 'A':
+                    mainImage.src = "ruta/imagen_punto_a.jpg";
+                    break;
+                case 'B':
+                    mainImage.src = "ruta/imagen_punto_b.jpg";
+                    break;
+                case 'C':
+                    mainImage.src = "ruta/imagen_punto_c.jpg";
+                    break;
             }
 
-            // Muestra la imagen seleccionada
-            imageContainer.innerHTML = `<img src="${imagePath}" alt="Imagen para el punto ${pointType}">`;
+            // Mostrar el botón de cerrar
+            closeButton.style.display = 'block';
+        }
+
+        // Función para restaurar la imagen principal y ocultar el botón de cerrar
+        function resetImage() {
+            const mainImage = document.getElementById('mainImage');
+            const closeButton = document.getElementById('closeButton');
+
+            // Restaurar la imagen principal
+            mainImage.src = "imagenes/Mapa.png";
+
+            // Ocultar el botón de cerrar
+            closeButton.style.display = 'none';
         }
     </script>
 
     <footer>
         <hr><br>
-        <p class="copyright"> &copy Copyright Daniel & David - 2024</p>
+        <p class="copyright"> &copy; Copyright Daniel & David - 2024</p>
     </footer>
 </body>
 </html>
