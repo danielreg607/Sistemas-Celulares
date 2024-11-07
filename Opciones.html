@@ -14,6 +14,7 @@
         <button onclick="showContent('imei')">IMEI</button>
         <button onclick="showContent('plan')">Plan</button>
         <button onclick="showContent('database')">Base de datos</button>
+        <button onclick="showContent('mapa')">Mapa de Ruta</button>
     </header>
 
     <div class="form-main">
@@ -30,31 +31,96 @@
             switch (option) {
                 case 'abonado':
                     content.innerHTML = `
-                        <h2>Información del Abonado</h2>
-                        <p>Aquí puedes ver los detalles del abonado, incluyendo su número de abonado, datos de contacto y más.</p>
+                        <div class="info-box">
+                            <h2>Información del Abonado</h2><hr><br><br>
+                            <p>Número de Abonado: 123456789</p>
+                            <p>Operador: OperadorXYZ</p>
+                            <p>Frecuencia: 1800 MHz</p>
+                        </div>
                     `;
                     break;
                 case 'imei':
+                    const randomIMEI = Math.floor(100000000000000 + Math.random() * 900000000000000); // Genera un IMEI aleatorio de 15 dígitos
                     content.innerHTML = `
-                        <h2>Información del IMEI</h2>
-                        <p>Aquí se muestra el número IMEI del dispositivo, junto con detalles sobre el fabricante y modelo.</p>
+                        <div class="info-box">
+                            <h2>Información del IMEI</h2><hr><br><br>
+                            <p>IMEI: ${randomIMEI}</p>
+                            <p>Operador: OperadorXYZ</p>
+                            <p>Marca: MarcaCelular</p>
+                        </div>
                     `;
                     break;
                 case 'plan':
                     content.innerHTML = `
-                        <h2>Detalles del Plan</h2>
-                        <p>Consulta los detalles del plan de datos, incluyendo minutos, mensajes y datos disponibles.</p>
+                        <div class="info-box">
+                            <h2>Detalles del Plan</h2><hr><br><br>
+                            <p>Operador: OperadorXYZ</p>
+                            <p>Plan de Pago: Postpago</p>
+                            <p>Estado del MS: Activo</p>
+                            <p>Servicio: Datos y llamadas</p>
+                        </div>
                     `;
                     break;
                 case 'database':
                     content.innerHTML = `
-                        <h2>Base de Datos</h2>
-                        <p>Accede a la base de datos de usuarios y dispositivos para gestionar los registros.</p>
+                        <h2>Base de Datos de Usuarios</h2><hr><br><br>
+                        <table border="1" style="width:100%; text-align:left;">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Número de Abonado</th>
+                                <th>Operador</th>
+                                <th>Plan</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Juan Pérez</td>
+                                <td>123456789</td>
+                                <td>OperadorXYZ</td>
+                                <td>Postpago</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>María López</td>
+                                <td>987654321</td>
+                                <td>OperadorABC</td>
+                                <td>Prepago</td>
+                            </tr>
+                            <!-- Puedes agregar más filas aquí -->
+                        </table>
+                    `;
+                    break;
+                case 'mapa':
+                    content.innerHTML = `
+                        <h2>Mapa de la ruta</h2>
+                        <p>Mapa de la ruta con los tres puntos para verificar cobertura.</p>
+                        <button onclick="showImage(1)">Punto 1</button>
+                        <button onclick="showImage(2)">Punto 2</button>
+                        <button onclick="showImage(3)">Punto 3</button>
+                        <div id="imageContainer"></div>
                     `;
                     break;
                 default:
                     content.innerHTML = `<p>Selecciona una opción para ver su información.</p>`;
             }
+        }
+
+        function showImage(pointType) {
+            let imageContainer = document.getElementById('imageContainer');
+            let abonadoNumber = prompt("Ingrese el número de abonado:");
+            let imagePath;
+
+            // Determina la imagen a mostrar según el tipo de punto y el número de abonado
+            if (pointType === 1) {
+                imagePath = abonadoNumber == 1 ? "ruta/imagen1_tipo1.jpg" : "ruta/imagen1_default.jpg";
+            } else if (pointType === 2) {
+                imagePath = abonadoNumber == 2 ? "ruta/imagen2_tipo2.jpg" : "ruta/imagen2_default.jpg";
+            } else if (pointType === 3) {
+                imagePath = abonadoNumber == 3 ? "ruta/imagen3_tipo3.jpg" : "ruta/imagen3_default.jpg";
+            }
+
+            // Muestra la imagen seleccionada
+            imageContainer.innerHTML = `<img src="${imagePath}" alt="Imagen para el punto ${pointType}">`;
         }
     </script>
 

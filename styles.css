@@ -278,3 +278,14 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Estilo para centrar la caja y darle color de fondo */
+.info-box {
+    background-color: #120250; /* Azul fuerte */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
